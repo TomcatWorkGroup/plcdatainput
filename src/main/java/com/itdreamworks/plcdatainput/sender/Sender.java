@@ -10,14 +10,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class Sender {
 
-	@Autowired
-	private RabbitTemplate rabbitTemplate;
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
-	public void send(byte[] byteArray) {
-		try {
-			rabbitTemplate.convertAndSend(byteArray);
-		} catch (AmqpException e) {
-			System.out.println(e);
-		}
-	}
+    public void send(byte[] byteArray) {
+        try {
+            rabbitTemplate.convertAndSend(byteArray);
+        } catch (AmqpException e) {
+            System.out.println(e);
+        }
+    }
 }

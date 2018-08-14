@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class ApplicationListeners implements ApplicationListener<ContextRefreshedEvent> {
 
     private Logger logger = LoggerFactory.getLogger(ApplicationListeners.class);

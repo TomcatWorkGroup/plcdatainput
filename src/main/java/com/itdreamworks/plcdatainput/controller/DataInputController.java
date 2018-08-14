@@ -13,27 +13,19 @@ public class DataInputController {
     @Autowired
     private Sender sender;
 
-    @Autowired
-    private DataInputService dataInputService;
+    //@Autowired
+    //private DataInputService dataInputService;
 
     @PostMapping("/input")
     public void inputData(@RequestBody(required = true) byte[] byteArray) {
-        String deviceNo=String.format("%1$010d",new BigInteger(new byte[]{byteArray[5],byteArray[6],byteArray[7],byteArray[8]}).intValue());
-        if(dataInputService.validateDeviceNo(deviceNo)){
+        String deviceNo = String.format("%1$010d", new BigInteger(new byte[]{byteArray[5], byteArray[6], byteArray[7], byteArray[8]}).intValue());
+        //if (dataInputService.validateDeviceNo(deviceNo)) {
             sender.send(byteArray);
-        }
+        //}
     }
 
-//    @PostMapping("/test")
-//    public String test(String data) {
-//        if(dataInputService.validateDeviceNo(data)){
-//            return data;
-//        }
-//        return "false";
-//    }
-
-    @GetMapping(value="/hello")
-    public  String getHello() {
+    @GetMapping(value = "/hello")
+    public String getHello() {
         return "hello world!";
     }
 }

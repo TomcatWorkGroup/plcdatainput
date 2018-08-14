@@ -6,10 +6,12 @@ import java.util.Map;
 
 public class DataSet {
     private static HashSet<Object> set;
+
     static {
         set = new HashSet<>();
     }
-    public DataSet(){
+
+    public DataSet() {
 
     }
 

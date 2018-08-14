@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@Component
+//@Component
 public class ScheduledTasks {
 
     private Logger logger = LoggerFactory.getLogger(ScheduledTasks.class);
@@ -25,24 +25,23 @@ public class ScheduledTasks {
     @Value("${com.itdreamworks.plcdatainput.baseurl}")
     private String baseUrl;
 
-    @Autowired
     private DataInputService dataInputService;
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
-    @Scheduled(cron="${spring.scheduling.cron}")
+    @Scheduled(cron = "${spring.scheduling.cron}")
     public void reportCurrentTime() {
-        logger.info("。。。。。。。。。。。。。。。。。定时任务开启，开始时间："+dateFormat.format(new Date())+"。。。。。。。。。。。。。。。。。。。。");
+        logger.info("。。。。。。。。。。。。。。。。。定时任务开启，开始时间：" + dateFormat.format(new Date()) + "。。。。。。。。。。。。。。。。。。。。");
         getDeviceArrayInfo();
     }
 
     /**
      * 调用设备服务获得设备信息
      */
-    public void getDeviceArrayInfo(){
+    public void getDeviceArrayInfo() {
 
-        TemplateClient client =Feign.builder().target(TemplateClient.class, String.format("%s%s",baseUrl,"/device/plc"));
+        TemplateClient client = Feign.builder().target(TemplateClient.class, String.format("%s%s", baseUrl, "/device/plc"));
         String jsonStr = client.get();
-        JSONArray jsonArray= JSONArray.parseArray(jsonStr);
+        JSONArray jsonArray = JSONArray.parseArray(jsonStr);
         DataSetUtil util = DataSetUtil.getInstance();
         util.putCache(jsonArray);
     }

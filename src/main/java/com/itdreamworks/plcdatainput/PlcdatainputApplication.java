@@ -8,7 +8,7 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-@EnableScheduling
+//@EnableScheduling
 //@ServletComponentScan(basePackages = "com.itdreamworks.plcdatainput")
 public class PlcdatainputApplication {
     public static void main(String[] args) {
