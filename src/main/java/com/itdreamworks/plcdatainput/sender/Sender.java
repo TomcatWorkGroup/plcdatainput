@@ -20,4 +20,12 @@ public class Sender {
             System.out.println(e);
         }
     }
+
+    public void send(String key,byte[] byteArray) {
+        try {
+            rabbitTemplate.convertAndSend(key,byteArray);
+        } catch (AmqpException e) {
+            System.out.println(e);
+        }
+    }
 }
